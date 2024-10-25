@@ -9,7 +9,7 @@ xc_tenant = "treino-ufahspac"
 xc_namespace = "default"
 
 #XC LB
-app_domain = "waf-aws-ce.f5-hyd-xcdemo.com"
+app_domain = "waf-ce.f5-hyd-xcdemo.com"
 
 #XC WAF
 xc_waf_blocking = true
@@ -70,7 +70,7 @@ xc_mud = false
 # CE configs
 gcp_ce_site = "false"
 aws_ce_site = "true"
-site_name = "aws-ce-site"
+site_name = "aws-ce"
 
 # infra (Needed values: aws-infra, azure-infra, gcp-infra)
 aws   = "aws-infra"
