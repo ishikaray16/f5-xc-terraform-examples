@@ -158,7 +158,7 @@ jobs:
   terraform_eks_destroy:
     name: "AWS EKS"
     runs-on: ubuntu-latest
-    needs: [volt_mesh_site_destroy, terraform_boutique]
+    # needs: [volt_mesh_site_destroy, terraform_boutique]
     defaults:
       run:
         working-directory: ./aws/eks-cluster
@@ -231,7 +231,8 @@ jobs:
 
     
   destorying_infra:
-    needs: [volt_mesh_site_destroy, terraform_boutique, terraform_eks_destroy]
+    # needs: [volt_mesh_site_destroy, terraform_boutique, terraform_eks_destroy]
+    needs: [terraform_eks_destroy]
     name: "AWS Infra"
     runs-on: ubuntu-latest
     defaults:
