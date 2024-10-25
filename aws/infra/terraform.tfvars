@@ -1,5 +1,5 @@
 #Global
-project_prefix = "xc-waf-on-ce"
+project_prefix = "waf-ce"
 resource_owner = "ishika"
 
 #AWS INFRA
