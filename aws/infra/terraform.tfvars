@@ -1,6 +1,6 @@
 #Global
 project_prefix = "waf-ce"
-resource_owner = "name"
+resource_owner = "ishika"
 
 #AWS INFRA
 aws_region     = "eu-west-3"
