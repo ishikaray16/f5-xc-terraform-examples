@@ -1,10 +1,10 @@
 #Global
 project_prefix = "waf-ce"
-resource_owner = "ishika"
+resource_owner = "name"
 
 #AWS INFRA
-aws_region     = "ap-south-1"
-azs           = ["ap-south-1a", "ap-south-1b"]
+aws_region     = "eu-west-3"
+azs           = ["eu-west-3a", "eu-west-3b"]
 
 #Assets
 nic = false
