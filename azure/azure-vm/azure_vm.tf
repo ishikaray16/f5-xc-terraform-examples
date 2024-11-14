@@ -74,6 +74,7 @@ resource "azurerm_public_ip" "puip" {
   location            = local.azure_region
   resource_group_name = local.resource_group_name
   allocation_method   = "Dynamic"
+  sku                 = "Basic"
 }
 
 resource "azurerm_network_interface" "public" {
