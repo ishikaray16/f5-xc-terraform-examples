@@ -1,4 +1,4 @@
-project_prefix      = "genai"
+project_prefix      = "jani-genai"
 api_url             = "https://treino.console.ves.volterra.io/api"
 xc_tenant           = "treino-ufahspac"
 xc_namespace        = "default"
