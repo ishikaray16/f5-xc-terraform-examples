@@ -5,6 +5,7 @@ on:
     branches:
       - deploy-waf-re
   pull_request:
+  workflow_dispatch:
 
 jobs:
 
