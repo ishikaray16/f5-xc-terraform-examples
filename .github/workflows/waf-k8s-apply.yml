@@ -5,6 +5,7 @@ on:
     branches:
       - deploy-waf-k8s
   pull_request:
+  workflow_dispatch:
 
 jobs:
   terraform_infra:
