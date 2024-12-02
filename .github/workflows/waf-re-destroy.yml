@@ -5,6 +5,7 @@ on:
     branches:
       - destroy-waf-re
   pull_request:
+  workflow_dispatch:
 
 jobs:  
 
