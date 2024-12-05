@@ -9,6 +9,7 @@ on:
 
 jobs:
 
+
   terraform_infra:
     name: "Azure Infra"
     runs-on: ubuntu-latest
