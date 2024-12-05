@@ -2,14 +2,14 @@ name: "Deploy and Destroy Workflows"
 
 on:
   schedule:
-    - cron: '0 7 * * 4'
-    - cron: '0 8 * * 4'
-    - cron: '0 9 * * 4'
-    - cron: '0 10 * * 4'
-    - cron: '0 11 * * 4'
-    - cron: '0 12 * * 4'
-    - cron: '0 13 * * 4'
-    - cron: '0 14 * * 4'
+    - cron: '0 16 * * 4'
+    - cron: '30 16 * * 4'
+    - cron: '0 17 * * 4'
+    - cron: '30 17 * * 4'
+    - cron: '0 18 * * 4'
+    - cron: '0 19 * * 4'
+    - cron: '0 20 * * 4'
+    - cron: '0 21 * * 4'
 
 jobs:
   usecase_schedule:
@@ -21,49 +21,49 @@ jobs:
 
       - name: Trigger Deploy workflow
         run: gh workflow run waf-re-apply.yml --ref deploy-waf-re
-        if: github.event.schedule == '0 7 * * 4'
+        if: github.event.schedule == '0 16 * * 4'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Trigger Destroy workflow
         run: gh workflow run waf-re-destroy.yml --ref destroy-waf-re
-        if: github.event.schedule == '0 8 * * 4'
+        if: github.event.schedule == '30 16 * * 4'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Trigger Deploy workflow
         run: gh workflow run waf-re-ac-vm-apply.yml --ref deploy-waf-re-ac-vm
-        if: github.event.schedule == '0 9 * * 4'
+        if: github.event.schedule == '0 17 * * 4'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
 
       - name: Trigger Destroy workflow
         run: gh workflow run waf-re-ac-vm-destroy.yml --ref destroy-waf-re-ac-vm
-        if: github.event.schedule == '0 10 * * 4'
+        if: github.event.schedule == '30 17 * * 4'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Trigger Deploy workflow
         run: gh workflow run waf-on-ce-aws-apply.yml --ref deploy-waf-aws-ce
-        if: github.event.schedule == '0 11 * * 4'
+        if: github.event.schedule == '0 18 * * 4'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
 
       - name: Trigger Destroy workflow
         run: gh workflow run waf-on-ce-aws-destroy.yml --ref destroy-waf-aws-ce
-        if: github.event.schedule == '0 12 * * 4'
+        if: github.event.schedule == '0 19 * * 4'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Trigger Deploy workflow
         run: gh workflow run waf-k8s-apply.yml --ref deploy-waf-k8s
-        if: github.event.schedule == '0 13 * * 4'
+        if: github.event.schedule == '0 20 * * 4'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
 
       - name: Trigger Destroy workflow
         run: gh workflow run waf-k8s-destroy.yml --ref destroy-waf-k8s
-        if: github.event.schedule == '0 14 * * 4'
+        if: github.event.schedule == '0 21 * * 4'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
