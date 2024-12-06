@@ -5,6 +5,7 @@ on:
     branches:
       - deploy-waf-k8s
   pull_request:
+  workflow_dispatch:
 
 jobs:
   terraform_infra:
@@ -77,7 +78,7 @@ jobs:
         run: exit 1
 
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/deploy-waf-k8s' && github.event_name == 'push'
+        if: github.ref == 'refs/heads/deploy-waf-k8s' && ( github.event_name == 'push' || github.event_name == 'workflow_dispatch')
         run: terraform apply -auto-approve -input=false
 
   terraform_eks:
@@ -151,7 +152,7 @@ jobs:
         run: exit 1
 
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/deploy-waf-k8s' && github.event_name == 'push'
+        if: github.ref == 'refs/heads/deploy-waf-k8s' && ( github.event_name == 'push' || github.event_name == 'workflow_dispatch')
         run: terraform apply -auto-approve -input=false
 
 
@@ -226,7 +227,7 @@ jobs:
         run: exit 1
 
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/deploy-waf-k8s' && github.event_name == 'push'
+        if: github.ref == 'refs/heads/deploy-waf-k8s' && ( github.event_name == 'push' || github.event_name == 'workflow_dispatch')
         run: terraform apply -auto-approve -input=false
 
 
@@ -341,7 +342,7 @@ jobs:
         run: exit 1
 
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/deploy-waf-k8s' && github.event_name == 'push'
+        if: github.ref == 'refs/heads/deploy-waf-k8s' && ( github.event_name == 'push' || github.event_name == 'workflow_dispatch')
         run: terraform apply -auto-approve -input=false
 
 
@@ -417,7 +418,7 @@ jobs:
         run: exit 1
 
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/deploy-waf-k8s' && github.event_name == 'push'
+        if: github.ref == 'refs/heads/deploy-waf-k8s' && ( github.event_name == 'push' || github.event_name == 'workflow_dispatch')
         run: terraform apply -auto-approve -input=false
         env:
           TF_VAR_site_name: ${{ secrets.TF_VAR_site_name }}

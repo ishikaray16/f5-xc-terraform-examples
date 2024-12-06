@@ -23,13 +23,16 @@ Prerequisites
 Workflow Steps
 -----------------
 
+Create a token
+-----------------------
 - For deploying WAF on k8s, please copy both yml files in workflow folder to root folder .github/workflows folder. For ex: `waf-k8s-apply.yml <https://github.com/f5devcentral/f5-xc-terraform-examples/blob/main/.github/workflows/waf-k8s-apply.yml>`__
 
 - Login to Distributed Cloud, click on `Multi-Cloud-Connect`, navigate to `Site Management` and then to `Site Tokens` as shown below
 
 .. image:: /workflow-guides/waf/f5-xc-waf-on-k8s/assets/site-token.jpg
 
-- Create a site token with CE site name (`ce-k8s`) and copy the ID
+- Create a site token with CE site name and copy the ID & name. 
+**NOTE: MAKE SURE TOKEN IS NEWLY CREATED OR EXISTING TOKEN NOT BEING USED BY OTHER CE SITES FROM REGISTRATIONS PAGE IN SITE MANAGEMENT DROP-DOWN**
 
 
 List of Products Used
@@ -100,8 +103,8 @@ GitHub
    -  TF_CLOUD_ORGANIZATION: Your Terraform Cloud Organization name
    -  TF_CE_LATITUDE: Your CE location latitude
    -  TF_CE_LONGITUDE: Your CE location longitude
-   -  TF_CE_TOKEN: CE token ID generated in Distributed Cloud
-   -  TF_VAR_SITE_NAME: CE site name to be registered
+   -  TF_CE_TOKEN: CE token ID generated from above `Create a token` section
+   -  TF_VAR_SITE_NAME: CE site name to be registered. **NOTE: Make sure this matches with the token name created in `Create a token` section**
    -  TF_CLOUD_WORKSPACE\_\ *<Workspace Name>*: Create for each
       workspace in your workflow per each job
 
@@ -163,17 +166,98 @@ f5-xc-waf-on-k8s destroy-waf-k8s
 
 -  k8s_pool = "true if backend is residing in k8s"
 
--  serviceName = "k8s service name of backend. Set this to productpage.default."
+-  serviceName = "k8s service name of backend. If you are using our demo app set this to **productpage.default**."
 
 -  serviceport = "k8s service port of backend. For bookinfo demo application you can keep this value as 9080."
 
--  advertise_sites = "set to false if want to advertise on public"
+-  advertise_sites = "set to true as we want to advertise this on CE"
 
--  http_only = "set to true if want to advertise on http protocol"
+-  http_only = "set to true as we want to use only http protocol"
 
-Check below image for sample data
+**NOTE: Please don't add site_name varible once again here as this variable is already added in action secrets. Keep other fields as false**
 
-.. image:: /workflow-guides/waf/f5-xc-waf-on-k8s/assets/xc-tfvars.JPG
+Check below file content for sample tfvars data
+
+.. code-block:: language
+   
+   #XC Global
+   api_url = "https://tenant.console.ves.volterra.io/api"
+   xc_tenant = "tenant-id"
+   xc_namespace = "default"
+   
+   #XC LB
+   app_domain = "waf-k8s.<domain>.com"
+   
+   #XC WAF
+   xc_waf_blocking = true
+   xc_data_guard = "false"
+   
+   # k8 pool and LB inputs
+   k8s_pool = "true"
+   serviceName = "productpage.default"
+   serviceport = "9080"
+   advertise_sites = "true"
+   http_only = "true"
+   eks_ce_site = "true"
+   user_site = "true"
+   
+   #Only set to true if infrastructure is vk8s in XC
+   vk8s = false
+   xc_project_prefix = ""
+
+   xc_delegation = "false"
+   ip_address_on_site_pool = "false"
+   
+   #XC Azure CE site creation
+   az_ce_site = "false"
+   
+   #XC Service Discovery
+   xc_service_discovery = "false"
+   
+   #XC AI/ML Settings for MUD, APIP - NOTE: Only set if using AI/ML settings from the shared namespace
+   xc_app_type = []
+   xc_multi_lb = false
+   
+   #XC API Protection and Discovery
+   xc_api_disc = false
+   xc_api_pro = false
+   xc_api_spec = []
+   #Enable API schema validation
+   xc_api_val = false
+   #Enable API schema validation on all endpoints
+   xc_api_val_all = false 
+   #Validation properties for request and response validation
+   xc_api_val_properties = [] #Example ["PROPERTY_QUERY_PARAMETERS", "PROPERTY_PATH_PARAMETERS", "PROPERTY_CONTENT_TYPE", "PROPERTY_COOKIE_PARAMETERS", "PROPERTY_HTTP_HEADERS", "PROPERTY_HTTP_BODY"]
+   xc_resp_val_properties = [] #Example ["PROPERTY_HTTP_HEADERS", "PROPERTY_CONTENT_TYPE", "PROPERTY_HTTP_BODY", "PROPERTY_RESPONSE_CODE"]
+   #Validation Mode active for requests and responses (false = skip)
+   xc_api_val_active = false
+   xc_resp_val_active = false
+   #Validation Enforment Type (only one of these should be set to true)
+   enforcement_block = false
+   enforcement_report = false
+   #Allow access to unprotected endpoints 
+   fall_through_mode_allow = false
+   #Enable API Validation custom rules
+   xc_api_val_custom = false 
+   
+   #XC Bot Defense
+   xc_bot_def = false
+   
+   #XC DDoS
+   xc_ddos_pro = false
+   
+   #XC Malicious User Detection
+   xc_mud = false
+   
+   # CE configs
+   gcp_ce_site = "false"
+   aws_ce_site = "false"
+   
+   # infra (Needed values: aws-infra, azure-infra, gcp-infra)
+   aws   = "aws-infra"
+   azure = ""
+   gcp   = ""
+
 
 **STEP 4:** Also update default value of ``aws_waf_ce`` variable in ``variables.tf`` file of ``/aws/eks-cluster``, ``/aws/eks-cluster/ce-deployment`` and ``/shared/booksinfo`` folders if it's not ``infra``. Commit and push your build branch to your forked repo, Build will run and can be monitored in the GitHub Actions tab and TF Cloud console
 
