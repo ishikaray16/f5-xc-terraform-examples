@@ -1,19 +1,18 @@
-name: "F5 XC Bot Defense on RE Deploy"
+name: "Deploy Gen AI on F5 XC Appstack and Managed k8s"
 
 on:
   push:
     branches:
-      - bot-defense-re
+      - deploy-genai-appstack
   pull_request:
-  workflow_dispatch:
-    
+
 jobs:
-  terraform_xc_lb:
-    name: "Deploy F5 XC Bot Defense"
+  terraform_xc:
+    name: "Deploy F5XC Appstack and Managed k8s"
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./xc
+        working-directory: ./workflow-guides/smcn/genai-inference-at-the-edge/terraform
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -23,32 +22,25 @@ jobs:
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-      - name: Pull latest code
-        run: |
-          git config --global user.email @${{ github.actor }}
-          git config --global user.name @${{ github.actor }}
-          git remote add upstream https://github.com/f5devcentral/f5-xc-terraform-examples.git
-          git fetch upstream
-          git merge upstream/main --strategy-option theirs --allow-unrelated-histories
-
       - name: Setup Terraform Backend
         id: backend
         run: |
           cat > backend.tf << EOF
-          terraform {
+          terraform { 
             cloud {
               organization = "${{ secrets.TF_CLOUD_ORGANIZATION }}"
               workspaces {
-                name = "${{ secrets.TF_CLOUD_WORKSPACE_XC }}"
+                name = "${{ secrets.TF_CLOUD_WORKSPACE_APPSTACK }}"
               }
             }
           }
           EOF
-           echo "${{secrets.P12}}" | base64 -d > api.p12
+          echo "${{secrets.P12}}" | base64 -d > api.p12
+          #cat api.p12
 
       - name: Terraform Init
         id: init
-        run: terraform inits
+        run: terraform init
 
       - name: Terraform Validate
         id: validate
@@ -86,23 +78,9 @@ jobs:
         if: steps.plan.outcome == 'failure'
         run: exit 1
 
-      - name: Copy App Manifest
-        run: cp ../shared/airline-app/airflask.yaml .
-
-      - name: Check terraform version
-        run: |
-          terraform --version
-          echo "event name is:" ${{ github.event_name }} 
-        
-
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/bot-defense-re' && ( github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+        if: github.ref == 'refs/heads/deploy-genai-appstack' && github.event_name == 'push'
         run: terraform apply -auto-approve -input=false
-
-      - name: Run Traffic
-        run: |
-          cp ../tools/run-curl-traffic.sh .
-          export cname=$(terraform output -raw lb_cname)
-          echo $cname 
-          sleep 30 
-          sh run-curl-traffic.sh "$cname/user/signin"
+        env:
+          TF_VAR_aws_access_key: ${{ secrets.aws_access_key }}
+          TF_VAR_aws_secret_key: ${{ secrets.aws_secret_key }}
