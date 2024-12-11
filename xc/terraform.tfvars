@@ -68,7 +68,7 @@ xc_mud = false
 # CE configs
 gcp_ce_site = "false"
 aws_ce_site = "false"
-site_name = "ce-k8s"
+site_name = "cek8s-new"
 
 # infra (Needed values: aws-infra, azure-infra, gcp-infra)
 aws   = "infra"
