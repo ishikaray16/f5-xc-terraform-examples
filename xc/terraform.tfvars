@@ -71,6 +71,6 @@ aws_ce_site = "false"
 site_name = "ce-k8s"
 
 # infra (Needed values: aws-infra, azure-infra, gcp-infra)
-aws   = "aws-infra"
+aws   = "infra"
 azure = ""
 gcp   = ""
