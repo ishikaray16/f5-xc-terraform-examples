@@ -1,9 +1,10 @@
 #Global
-project_prefix = "ishika-bd"
+project_prefix = "gcp-bot"
 
 # INFRA
 gcp_region = "us-west1"
 gcp_project_id = "f5-gcs-5611-mktg-secsols"
+service_account = "ishika@f5-gcs-5611-mktg-secsols.iam.gserviceaccount.com"
 
 #Assets
 nic = false
