@@ -1,10 +1,30 @@
-# F5 Distributed Cloud Terraform Examples
+# F5 Distributed Cloud -- Automation Examples
 
 ## Overview
 
 Examples of F5 Distributed Cloud (XC) deployments utilizing Terraform. For more information on the use cases covered by this project, please see the following articles and workflow guides:
 
+---
+## **F5 Distributed Cloud Application Delivery and Security**
 
+  | **DevCentral Overview Articles**                                                                                           | **Use Case / Workflow Guides**                                                                                                                                                |
+  |----------------------------------------------------------------------------------------------------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | [App Delivery & Security for Hybrid Environments using F5 Distributed Cloud](https://community.f5.com/kb/technicalarticles/f5-scalable-app-delivery--security-for-hybrid-environments/343182) | [App Delivery & Security for Hybrid Environments using F5 Distributed Cloud (SaaS Console)](https://github.com/f5devcentral/f5-xc-terraform-examples/blob/main/workflow-guides/application-delivery-security/workload/README.rst)                        |
+  | [App Migration across Heterogeneous Environments using F5 Distributed Cloud](https://community.f5.com/kb/technicalarticles/app-migration-across-heterogeneous-environments-using-f5-distributed-cloud/344192) | [App Migration across Heterogeneous Environments using F5 Distributed Cloud (SaaS Console)](https://github.com/f5devcentral/f5-xc-terraform-examples/blob/main/workflow-guides/application-delivery-security/migration/README.rst)                        |
+  | [Nutanix Community Edition 2.1 installation on Bare Metal ]() | [Nutanix Community Edition 2.1 installation on Bare Metal ](https://github.com/f5devcentral/f5-xc-terraform-examples/blob/main/workflow-guides/application-delivery-security/Nutanix/nutanix_community_edition_2.1_installation.rst)                        |
+  | [Nutanix Community Edition 2.1 installation on VMware ]() | [Nutanix Community Edition 2.1 installation on VMware ](https://github.com/f5devcentral/f5-xc-terraform-examples/blob/main/workflow-guides/application-delivery-security/Nutanix_on_VMware/Nutanix_CE_2.1_installation_on_VMware.rst)                        |
+
+---
+## **F5 XC CE Deployment using Secure Mesh Site v2 (SMSv2)**
+Deploying CE as Secure Mesh Site version 2 (SMSv2) makes deployment and operations faster, simpler and more reliable. This version also provides flexibility of adding interfaces without the need of certificate provisioning in accordance to hardware.
+  | **DevCentral Overview Articles**                                                                                           | **Use Case / Workflow Guides**                                                                                                                                                |
+  |----------------------------------------------------------------------------------------------------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | [F5 XC CE deploy on Nutanix using SMSv2](#) | [F5 XC CE deploy on Nutanix using SMSv2  (SaaS Console)](https://github.com/f5devcentral/f5-xc-terraform-examples/blob/main/workflow-guides/smsv2-ce/Secure_Mesh_Site_v2_in_Nutanix/secure_mesh_site_v2_in_nutanix.rst)                        |
+  | [Deploy WAF on Azure with F5 Distribued Cloud](#) | [Deploy F5 XC WAF on Azure using SMSv2  (SaaS Console)](https://github.com/f5devcentral/f5-xc-terraform-examples/blob/main/workflow-guides/smsv2-ce/waf-on-azure-smsv2-ce.rst)                        |
+  | [Deploy API Security on Azure with F5 Distribued Cloud](#) | [Deploy F5 XC API Security on Azure using SMSv2  (SaaS Console)](https://github.com/f5devcentral/f5-xc-terraform-examples/blob/main/workflow-guides/smsv2-ce/api-protection-on-azure-smsv2-ce.rst)                        |
+  | [Deploy Bot Defense on AWS with F5 Distribued Cloud](#) | [Deploy F5 XC Bot Defense on AWS using SMSv2  (SaaS Console)](https://github.com/f5devcentral/f5-xc-terraform-examples/blob/main/workflow-guides/smsv2-ce/bot-on-aws-smsv2-ce.rst)                        |
+
+## Application Security
 ### **F5 Distributed Cloud WAF**
 
   | **DevCentral Overview Articles**                                                                                                                          | **Use Case / Workflow Guides (SaaS Console, Automation)**                                                                                                                                                |
@@ -21,6 +41,7 @@ Examples of F5 Distributed Cloud (XC) deployments utilizing Terraform. For more 
   | [Deploy WAF on any Edge with F5 Distributed Cloud](https://community.f5.com/t5/technical-articles/deploy-waf-on-any-edge-with-f5-distributed-cloud/ta-p/313079) | [Deploy F5 XC WAF on Private Cloud Edge - KVM (SaaS Console)](https://github.com/f5devcentral/f5-xc-waap-terraform-examples/blob/main/workflow-guides/waf/f5-xc-waf-on-private-cloud-edge/KVM/kvm-deploy-demo-guide.rst)       |  
   | [Deploy WAF on any Edge with F5 Distributed Cloud](https://community.f5.com/t5/technical-articles/deploy-waf-on-any-edge-with-f5-distributed-cloud/ta-p/313079) | [Deploy F5 XC WAF on Private Cloud Edge - Bare Metal (SaaS Console)](https://github.com/f5devcentral/f5-xc-waap-terraform-examples/blob/main/workflow-guides/waf/f5-xc-waf-on-private-cloud-edge/Baremetal-onprem/baremetal-onprem-deploy-demo-guide.rst)       |  
 
+
 ### **F5 Distributed Cloud API Security**
   
   | **DevCentral Overview Articles**                                                                                                                                                     | **Use Case / Workflow Guides (SaaS Console, Automation)**                                                                                                                                                                    |
@@ -30,7 +51,7 @@ Examples of F5 Distributed Cloud (XC) deployments utilizing Terraform. For more 
   | [Deploy API Security Anywhere with F5 Distributed Cloud](https://community.f5.com/t5/technical-articles/out-of-the-shadows-api-discovery-and-security/ta-p/303789) | [Deploy F5 XC API Security on XC Customer Edges (SaaS Console, Automation)](https://github.com/f5devcentral/f5-xc-waap-terraform-examples/blob/main/workflow-guides/api-security/f5-xc-apisec-on-ce-eks/README.rst)                         |                                             |
 
 
-### **F5 Distributed Cloud Bot Protection**
+### **F5 Distributed Cloud Bot Defense**
   
   | **DevCentral Overview Articles**                                                                                                                                                                           | **Use Case / Workflow Guides (SaaS Console, Automation)**                                                                                                                                                                                                        |
   | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -39,10 +60,10 @@ Examples of F5 Distributed Cloud (XC) deployments utilizing Terraform. For more 
   | [Deploy Bot Defense as Code (IaC) or SaaS Console Anywhere](https://community.f5.com/t5/technical-articles/deploy-bot-defense-as-code-iac-or-saas-console-anywhere/ta-p/323272) | [Deploy Bot Defense in Azure with BIG-IP Connector for F5 Distributed Cloud (SaaS Console, Automation)](https://github.com/f5devcentral/f5-xc-waap-terraform-examples/tree/main/workflow-guides/bot/deploy-botdefense-in-azure-with-f5xc-bigip-connector)                  |
   | [Deploy Bot Defense as Code (IaC) or SaaS Console Anywhere](https://community.f5.com/t5/technical-articles/deploy-bot-defense-as-code-iac-or-saas-console-anywhere/ta-p/323272)      | [Deploy Bot Defense in GCP Using BIG-IP Connector for F5 Distributed Cloud  (SaaS Console, Automation)](https://github.com/f5devcentral/f5-xc-waap-terraform-examples/tree/main/workflow-guides/bot/deploy-botdefense-in-gcp-with-f5xc-bigip-connector)                     |
 
-
-
 ### **F5 Distributed Cloud DoS Protection**
 
+---
+## Application Delivery
 
 ### **F5 Distributed Cloud Secure Multi-Cloud Networking (MCN)**
 
@@ -54,10 +75,39 @@ Examples of F5 Distributed Cloud (XC) deployments utilizing Terraform. For more 
   | [Protect multi-cloud and Edge Generative AI applications with F5 Distributed Cloud](https://community.f5.com/kb/technicalarticles/protect-multi-cloud-and-edge-generative-ai-applications-with-f5-distributed-clou/328109) | [Deploying and securing Generative AI applications at the Edge with F5 XC AppStack and XC WAF in AWS (SaaS Console, Automation)](https://github.com/f5devcentral/f5-xc-terraform-examples/tree/main/workflow-guides/smcn/genai-inference-at-the-edge) |
   | [Protect multi-cloud and Edge Generative AI applications with F5 Distributed Cloud](https://community.f5.com/kb/technicalarticles/protect-multi-cloud-and-edge-generative-ai-applications-with-f5-distributed-clou/328109) | [Connecting and securing distributed Generative AI applications with F5 XC AppConnect and XC WAF in AWS and GCP (SaaS Console, Automation)](https://github.com/f5devcentral/f5-xc-terraform-examples/tree/main/workflow-guides/smcn/genai-appconnect-waf) |  
   | [Using Network Segmentation in F5 XC routed hybrid & multi-cloud environments](https://community.f5.com/kb/technicalarticles/simplify-network-segmentation-for-hybrid-cloud/330876)  |  [Configuring a Secure Network Fabric with Network Segmentation and Cloud Link in a F5 XC routed hybrid and multi-cloud cloud environment](https://github.com/f5devcentral/f5-xc-terraform-examples/tree/main/workflow-guides/smcn/secure-network-fabric)  |  
-  | - | [ Enable DMZ scalability and minimize your​ appliance footprint (Site Mesh Sites on VMware)](https://github.com/f5devcentral/f5-xc-terraform-examples/tree/main/workflow-guides/smcn/application-dmz)  |
+  | [Scale Your DMZ with F5 Distributed Cloud Services](https://community.f5.com/kb/technicalarticles/scale-your-dmz-with-f5-distributed-cloud-services/340256) | [ Enable DMZ scalability and minimize your​ appliance footprint (Site Mesh Sites on VMware)](https://github.com/f5devcentral/f5-xc-terraform-examples/tree/main/workflow-guides/smcn/application-dmz)  |
   | [Optimizing Networking with F5 Distributed Cloud Services](coming soon)  |  [Addressing IP Overlaps & Optimizing Networking with F5 Distributed Cloud Services {**NEW**}](https://github.com/f5devcentral/f5-xc-terraform-examples/tree/main/workflow-guides/smcn/nat)  | 
+  | :soon: [Automation: Secure Multi-Cloud Networking with Web Application and API Protection](#)  |  [Multi-Cloud Networking (MCN) for Distributed Apps with secure L3 Routing and L4/L7 Services using CE Site Mesh & App Connect](https://github.com/f5devcentral/f5-xc-terraform-examples/tree/main/workflow-guides/smcn/mcn-distributed-apps-l3)  |
 
-### **F5 Distributed Cloud Teachable** 
+
+### **F5 Edge Compute**
+
+  | **DevCentral Overview Articles**                                                                                                                                                                           | **Use Case / Workflow Guides (SaaS Console, Automation)**                                                                                                                                                       |
+  | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | [Demo Guide: Edge Compute with F5 Distributed Cloud App Stack (SaaS Console, Automation](https://community.f5.com/kb/technicalarticles/demo-guide-edge-compute-with-f5-distributed-cloud-services-saas-console-automati/316764) | [F5 Edge Compute and Enterprise Networking with F5 Distributed Cloud Services (SaaS Console, Automation)](https://github.com/f5devcentral/xcedgedemoguide) |
+  | [Demo Guide: Edge Compute with F5 Distributed Cloud App Stack (SaaS Console, Automation](https://community.f5.com/kb/technicalarticles/demo-guide-edge-compute-with-f5-distributed-cloud-services-saas-console-automati/316764) | [F5 Edge Compute and Enterprise Networking with F5 Distributed Cloud Services on AWS only (SaaS Console, Automation)](https://github.com/f5devcentral/xcawsedgedemoguide) |
+  | [Demo Guide: Edge Compute with F5 Distributed Cloud App Stack (SaaS Console, Automation](https://community.f5.com/kb/technicalarticles/demo-guide-edge-compute-with-f5-distributed-cloud-services-saas-console-automati/316764) | [F5 Edge Compute and Enterprise Networking with F5 Distributed Cloud Services on Azure only (SaaS Console, Automation)](https://github.com/f5devcentral/xcazedgedemoguide) |
+
+
+### **F5 CDN**
+
+ | **DevCentral Overview Articles**                                                                                                                                                                           | **Use Case / Workflow Guides (SaaS Console, Automation)**                                                                                                                                                       |
+  | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | [Demo Guide: F5 Distributed Cloud CDN with WAAP (SaaS Console, Automation)](https://community.f5.com/kb/technicalarticles/demo-guide-f5-distributed-cloud-cdn-with-waap-saas-console-automation/318402) | [F5 Distributed Cloud CDN with WAAP (SaaS Console, Automation)](https://github.com/f5devcentral/xcwaapcdnguide) |
+
+
+### **F5 Distributed Cloud Telemetry**
+
+  | **DevCentral Overview Articles**                                                                                                                                                                   | **Use Case / Workflow Guides (SaaS Console, Automation)**                                                                                                                                                |
+  | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | [F5 Distributed Cloud Telemetry (Logs) - ELK ](https://community.f5.com/kb/technicalarticles/f5-distributed-cloud-telemetry-logs---elk-stack/342445) | [F5 XC Telemetry (Logs) - ELK](https://github.com/f5devcentral/f5-xc-terraform-examples/blob/main/workflow-guides/telemetry/f5-xc-telemetry-elk/Logs/README.rst)                                         |
+  | [F5 Distributed Cloud Telemetry (Metrics) - ELK ](https://community.f5.com/kb/technicalarticles/f5-distributed-cloud-telemetry-metrics---elk-stack/342991) | [F5 XC Telemetry (Metrics) - ELK](https://github.com/f5devcentral/f5-xc-terraform-examples/blob/main/workflow-guides/telemetry/f5-xc-telemetry-elk/metrics/README.rst)                                   |
+  | [F5 Distributed Cloud Telemetry (Logs) - Loki and Grafana ](https://community.f5.com/kb/technicalarticles/f5-distributed-cloud-telemetry-logs---loki/342455) | [F5 Distributed Cloud Telemetry (Logs) - Loki (Automation)](https://github.com/f5devcentral/f5-xc-terraform-examples/tree/main/workflow-guides/telemetry/f5-xc-telemetry-loki/README.rst)                          |
+  | [F5 Distributed Cloud Telemetry (Metrics)- Prometheus and Grafana ](https://community.f5.com/kb/technicalarticles/f5-distributed-cloud-telemetry-metrics---prometheus/342459) | [F5 Distributed Cloud Telemetry (Metrics) - Prometheus (Automation)](https://github.com/f5devcentral/f5-xc-terraform-examples/tree/main/workflow-guides/telemetry/f5-xc-telemetry-prometheus/README.rst) |
+
+
+---   
+## **F5 Distributed Cloud Teachable** 
 
 
   | **Teachable Courses**                                                                                                                                                                           | **Use Case / Workflow Resources (Automation, SaaS Console)**                                                                                                                                                                                                        |
@@ -68,8 +118,9 @@ Examples of F5 Distributed Cloud (XC) deployments utilizing Terraform. For more 
   | [F5 Distributed Cloud Web Application Firewall (WAF) on Customer Edge: Azure](https://trainingf5cloud.teachable.com/p/waf-on-ce)          |  [Deploy F5 XC WAF on XC Customer Edge in Azure (SaaS Console, Automation)](https://github.com/f5devcentral/f5-xc-waap-terraform-examples/blob/main/workflow-guides/waf/f5-xc-waf-on-ce/azure/README.rst) |
   | [F5 Distributed Cloud API Security on Customer Edge](https://trainingf5cloud.teachable.com/p/api_security_on_customer_edge)          |  [Deploy F5 XC API Security on XC Customer Edges (SaaS Console, Automation)](https://github.com/f5devcentral/f5-xc-waap-terraform-examples/blob/main/workflow-guides/api-security/f5-xc-apisec-on-ce-eks/README.rst) |
   | [F5 Distributed Cloud Web Application Firewall (WAF) on Customer Edge: AWS](https://trainingf5cloud.teachable.com/p/web-application-firewall-waf-on-customer-edge-aws) | [Deploy F5 XC WAF on XC Customer Edge in AWS (SaaS Console, Automation)](https://github.com/f5devcentral/f5-xc-waap-terraform-examples/blob/main/workflow-guides/waf/f5-xc-waf-on-ce/aws/README.rst) |
+  | [Bot Defense in GCP using ﻿BIG-IP Connector for F5 Distributed Cloud](https://trainingf5cloud.teachable.com/p/bot-defense-gcp-big-ip-connector) | [Deploying Bot Defense in GCP with BIG-IP Connector for F5 Distributed Cloud (SaaS Console, Automation)](https://github.com/f5devcentral/f5-xc-terraform-examples/blob/main/workflow-guides/bot/deploy-botdefense-in-gcp-with-f5xc-bigip-connector/README.rst) | 
 
-  
+
 ## Getting Started
 
 ## Prerequisites
