@@ -39,7 +39,7 @@ Create the XC Bot Defense Connector
   
 4: Use any name and a description for "XC Bot Defense Connector for BIG-IP in GCP". For example, here "gcp-xcbotdefense-connector" is used.
   
-5: Set the Application Region to "US", Connector Type "F5 BIG-IP iApp (v17.0 or greater) > save and exit
+5: Set the Application Region to "US", Connector Type "F5 BIG-IP iApp (v17.0 or greater) > save and exit. (Note: The XC Bot Defense Connector region should be same as the GCP region which we will be passing later)
 
 .. image:: assets/xc_bot_connector.png
 
@@ -64,25 +64,25 @@ Terraform Cloud
 
 -  **Variable Set:** Create a Variable Set with the following values and mark them as sensitive:
 
-   +------------------------------------------+--------------+------------------------------------------------------+
-   |         **Name**                         |  **Type**    |      **Description**                                 |
-   +==========================================+==============+======================================================+
-   | VES_P12_PASSWORD                         | Environment  | Password set while creating F5XC API certificate     |
-   +------------------------------------------+--------------+------------------------------------------------------+
-   | VOLT_API_P12_FILE                        | Environment  | Your F5XC API certificate. Set this to **api.p12**   |
-   +------------------------------------------+--------------+------------------------------------------------------+
-   | ssh_key                                  | TERRAFORM    | Your ssh key for accessing the created resources     |
-   +------------------------------------------+--------------+------------------------------------------------------+
-   | tf_cloud_organization                    | TERRAFORM    | Your Terraform Cloud Organization name               |
-   +------------------------------------------+--------------+------------------------------------------------------+
-   | GOOGLE_CREDENTIALS                       | ENVIRONMENT  | GCP Credentials in JSON format (in a single line)    |
-   +------------------------------------------+--------------+------------------------------------------------------+
-   | TF_VAR_api_key                           | ENVIRONMENT  | XC Bot Defense Connector API Key                     |
-   +------------------------------------------+--------------+------------------------------------------------------+
-   | TF_VAR_application_id                    | ENVIRONMENT  | XC Bot Defense Connector Application ID              |
-   +------------------------------------------+--------------+------------------------------------------------------+
-   | TF_VAR_tenant_id                         | ENVIRONMENT  | XC Bot Defense Connector Tenant ID                   |
-   +------------------------------------------+--------------+------------------------------------------------------+
+   +------------------------------------------+--------------+--------------------------------------------------------------+
+   |         **Name**                         |  **Type**    |      **Description**                                         |
+   +==========================================+==============+==============================================================+
+   | VES_P12_PASSWORD                         | Environment  | Password set while creating F5XC API certificate             |
+   +------------------------------------------+--------------+--------------------------------------------------------------+
+   | VOLT_API_P12_FILE                        | Environment  | Your F5XC API certificate. Set this to **api.p12**           |
+   +------------------------------------------+--------------+--------------------------------------------------------------+
+   | ssh_key                                  | TERRAFORM    | Your ssh key for accessing the created resources in GCP      |
+   +------------------------------------------+--------------+--------------------------------------------------------------+
+   | tf_cloud_organization                    | TERRAFORM    | Your Terraform Cloud Organization name                       |
+   +------------------------------------------+--------------+--------------------------------------------------------------+
+   | GOOGLE_CREDENTIALS                       | ENVIRONMENT  | GCP Credentials in JSON format (in a single line)            |
+   +------------------------------------------+--------------+--------------------------------------------------------------+
+   | TF_VAR_api_key                           | ENVIRONMENT  | XC Bot Defense Connector API Key                             |
+   +------------------------------------------+--------------+--------------------------------------------------------------+
+   | TF_VAR_application_id                    | ENVIRONMENT  | XC Bot Defense Connector Application ID                      |
+   +------------------------------------------+--------------+--------------------------------------------------------------+
+   | TF_VAR_tenant_id                         | ENVIRONMENT  | XC Bot Defense Connector Tenant ID                           |
+   +------------------------------------------+--------------+--------------------------------------------------------------+
 
   Note: Follow https://community.f5.com/kb/technicalarticles/creating-a-credential-in-f5-distributed-cloud-for-gcp/298290 to know more on how to Create GCP Service Account and get the credentials.
 
@@ -97,7 +97,7 @@ GitHub
    -  P12: The linux base64 encoded F5XC P12 certificate without spaces. NOTE: you can run `base64 <file-name>` to get this output
    -  TF_API_TOKEN: Your Terraform Cloud API token
    -  TF_CLOUD_ORGANIZATION: Your Terraform Cloud Organization name
-   -  SSH_KEY : Your ssh key for accessing the created resources
+   -  SSH_KEY : Your ssh key for accessing the created resources in GCP
    -  TF_CLOUD_WORKSPACE_APP : f5air
    -  TF_CLOUD_WORKSPACE_BIGIP : bigip
    -  TF_CLOUD_WORKSPACE_BOTDEFENSE : bigip-bd
@@ -136,11 +136,11 @@ Workflow File: `bot-defense-gcp-destroy.yaml </.github/workflows/bot-defense-gcp
 
 -  project_prefix = "Prefix of your choice"
 
--  gcp_region = “Any region of your choice”
+-  gcp_region = “Any region of your choice. Must be same as region provided for XC Bot Defense Connector”
 
 -  gcp_project_id = “Project ID”
 
--  service_account = “GCP Service Account Username”
+-  service_account = “GCP Service Account Username (email)”
 
 -  nic = “false”
 
